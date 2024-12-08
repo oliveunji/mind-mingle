@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -39,4 +38,82 @@
 
 .read-the-docs {
   color: #888;
+}
+
+body {
+  font-family: 'Pretendard', sans-serif;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left; /* 오른쪽 정렬 */
+  line-height: 1.25; /* 줄 간격 */
+  margin: 0 20px; /* 상단, 좌우 여백, 아래쪽 약간의 여백 */
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.subheading {
+  font-size: 16px;
+  font-weight: 400; /* Regular */
+  text-align: left; /* 왼쪽 정렬 */
+  line-height: 1.25;
+  margin: 0 20px; /* 좌우 여백 */
+  color: #555; /* 더 연한 색상 */
+  white-space: pre-line; /* 줄바꿈 유지 */
+}
+
+.image {
+  display: block;
+  margin: 100px 0 20px 0; /* 이미지 위/아래 여백, 가운데 정렬 */
+  max-width: 100%;  /* 화면 크기에 맞게 이미지 크기 조정 */
+  height: auto;  /* 비율 유지하면서 크기 조정 */
+}
+
+/* Footer 고정 설정 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  z-index: 1000;
+}
+
+/* 메뉴 리스트 컨테이너 */
+.footer-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 각 메뉴 버튼 스타일 */
+.footer-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: gray;
+  font-size: 12px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-button img {
+  width: 24px; /* 이미지 크기 */
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+/* 활성화된 메뉴 스타일 */
+.footer-button-active {
+  color: teal;
+}
+
+.footer-button:hover {
+  color: teal;
 }

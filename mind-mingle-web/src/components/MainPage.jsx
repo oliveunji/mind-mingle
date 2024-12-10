@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const MainPage = () => {
+    const [isBottomSheetOpen, setBottomSheetOpen] = useState(true);
     const menuItems = [
         { name: "Home", img: "/images/home_icon.png", active: false },
         { name: "Community", img: "/images/community_icon.png", active: false },
@@ -8,6 +9,10 @@ const MainPage = () => {
         { name: "Journal", img: "/images/journal_icon.png", active: false },
         { name: "Profile", img: "/images/profile_icon.png", active: false },
       ];
+
+    const toggleBottomSheet = () => {
+        setBottomSheetOpen(!isBottomSheetOpen);
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 p-4">
@@ -60,6 +65,22 @@ const MainPage = () => {
             </div>
           </section>
     
+          {isBottomSheetOpen && (
+                <div className="bottom-sheet">
+                <div className="bottom-sheet-content">
+                    <h2>Select Consultation Type</h2>
+                    <div className="option">Video</div>
+                    <hr className="divider" />
+                    <div className="option">Text</div>
+                    <hr className="divider" />
+                    <div className="option">Voice</div>
+                    <button className="close-button" onClick={toggleBottomSheet}>
+                    Close
+                    </button>
+                </div>
+                </div>
+            )}
+
           <footer className="footer">
             <div className="footer-menu">
             {menuItems.map((item, index) => (

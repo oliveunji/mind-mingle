@@ -11,6 +11,9 @@ const RegisterPage = () => {
             space, where your feelings truly matter.
         </p>
         <img src={huggingLogo} alt="Hugging Logo" className="image" />
+        <div className="bottom-button-container">
+            <button className="rounded-button">Next</button>
+        </div>
       </div>
     </div>
   );

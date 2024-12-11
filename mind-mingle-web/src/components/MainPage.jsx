@@ -65,21 +65,6 @@ const MainPage = () => {
             </div>
           </section>
     
-          {isBottomSheetOpen && (
-                <div className="bottom-sheet">
-                <div className="bottom-sheet-content">
-                    <h2>Select Consultation Type</h2>
-                    <div className="option">Video</div>
-                    <hr className="divider" />
-                    <div className="option">Text</div>
-                    <hr className="divider" />
-                    <div className="option">Voice</div>
-                    <button className="close-button" onClick={toggleBottomSheet}>
-                    Close
-                    </button>
-                </div>
-                </div>
-            )}
 
           <footer className="footer">
             <div className="footer-menu">
@@ -96,6 +81,26 @@ const MainPage = () => {
                 ))}
             </div>
           </footer>
+
+
+
+    {isBottomSheetOpen && (
+        <>
+          {/* Overlay */}
+          <div className="overlay" onClick={() => setBottomSheetOpen(false)}></div>
+
+          {/* 팝업 */}
+          <div className="popup">
+            <p style={{ fontSize: "16px", color: "gray", marginLeft: "20px" }}>Select Consultation Type</p>
+            <div className="option">Video</div>
+            <hr className="divider" />
+            <div className="option">Text</div>
+            <hr className="divider" />
+            <div className="option">Voice</div>
+          </div>
+        </>
+      )}
+      
         </div>
       );
 }

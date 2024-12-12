@@ -193,6 +193,39 @@ body {
   text-align: left;
 }
 
+.app-container {
+  position: fixed; /* 화면 하단 고정 */
+  bottom: 0; /* 화면 아래 */
+  left: 0;
+  width: 100%; /* 전체 너비 */
+  background-color: #f0f2f5; /* 배경색 */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  z-index: 1000; /* 최상위 레이어 */
+}
+
+.button-row {
+  width: 100%; /* Row 너비 전체 설정 */
+  margin: 0 auto; /* Row를 가운데 정렬 */
+}
+
+.custom-button {
+  width: 100%; /* Col 너비에 맞게 설정 */
+  padding: 10px; /* 버튼 세로 여백 */
+}
+
+.bottom-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+}
+
+.button-half-width {
+  width: 100%; /* 버튼이 각 열의 절반씩을 차지 */
+}
+
 /* 팝업 애니메이션 */
 @keyframes slideUp {
   from {

@@ -276,12 +276,12 @@ export const startRealtime = async () => {
   }
 }
 
-// formStopButton.addEventListener("click", async () => {
+export const stopRealtime = async () => {
 //   setFormInputState(InputState.Working)
-//   resetAudio(false)
-//   realtimeStreaming.close()
+  resetAudio(false)
+  realtimeStreaming.close()
 //   setFormInputState(InputState.ReadyToStart)
-// })
+}
 
 // formClearAllButton.addEventListener("click", async () => {
 //   formReceivedTextContainer.innerHTML = ""

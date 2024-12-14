@@ -1,17 +1,30 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { Col, Row, Button, Image } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
-import { startRealtime } from "../main";
+import { startRealtime, stopRealtime } from "../main";
+
+
 const VoicePage = () => {
+    const [activeSpeaker, setActiveSpeaker] = useState("");
+    const [isSpeaking, setIsSpeaking] = useState(false);
+
     const handleClick = () => {
-        startRealtime()
+        setIsSpeaking((prevState) => !prevState); 
+        if(isSpeaking) {
+            startRealtime()
+        }
+        else {
+            stopRealtime()
+        }
     }
 
-    const imageContainerStyle = (speaker) => ({
-        border: speaking === speaker ? "4px solid #FFD700" : "4px solid transparent",
-        borderRadius: "50%",
-        padding: "5px",
-        animation: speaking === speaker ? "pulse 1.5s infinite" : "none",
+    const getBorderStyle = (speaker) => ({
+        border: activeSpeaker === speaker ? "4px solid #007970" : "4px solid transparent",
+        borderRadius: "10px", // 테두리 둥글게
+        display: "inline-block", // 이미지 크기에 맞춤
+        padding: "2px", // 테두리와 이미지 사이 여백 조정
+        transition: "border 0.3s ease", // 부드럽게 테두리 변화
       });
 
     return (
@@ -48,19 +61,24 @@ const VoicePage = () => {
             </div>  
             <div >
                 <Row style={{ margin: "10px", marginBottom: "20px"}}>
+                    <div style={getBorderStyle("alloy")}>
                         <Image
                             width="100%"
                             height="auto"
                             src="/images/alloy.png"
                         />
+                    </div>
                 </Row>
                 <Row style={{ margin: "10px"}}>
+                    <div style={getBorderStyle("user")}>
                         <Image
                             width="100%"
                             height="auto"
                             src="/images/user.png"
                         />
+                    </div>
                 </Row>
+
             </div>
             <Row className="bottom-buttons" style={{ marginBottom: "20px", padding: "20px", alignItems: "center"}}>
                 <Col style={{ marginRight: "20px"}}>
@@ -68,12 +86,17 @@ const VoicePage = () => {
                 </Col>
                 <Col >
                     <Button type="primary" className="button-half-width" style={{ height: '56px', width: '162px' }} onClick={handleClick}>
-                        Speaking
+                        {isSpeaking ? "Stop" : "Speaking"}
                     </Button>
                 </Col>
             </Row>
         </>
     )
 }
+
+
+// const CustomButton = styled(Button)`
+//   background-color: #007970;
+// `;
 
 export default VoicePage;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Col, Row, Button, Image } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
@@ -8,6 +8,10 @@ import { startRealtime, stopRealtime } from "../main";
 const VoicePage = () => {
     const [activeSpeaker, setActiveSpeaker] = useState("");
     const [isSpeaking, setIsSpeaking] = useState(false);
+
+    useEffect(() => {
+        window.updateActiveSpeaker = setActiveSpeaker;
+    }, []);
 
     const handleClick = () => {
         setIsSpeaking((prevState) => !prevState); 

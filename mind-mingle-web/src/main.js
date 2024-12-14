@@ -99,10 +99,16 @@ async function handleRealtimeMessages() {
         // let textElements = formReceivedTextContainer.children
         // latestInputSpeechBlock = textElements[textElements.length - 1]
         // makeNewTextBlock()
+        if (window.updateActiveSpeaker) {
+            window.updateActiveSpeaker("user");
+          }
         audioPlayer.clear()
         break
       case "conversation.item.input_audio_transcription.completed":
         // latestInputSpeechBlock.textContent += " User: " + message.transcript
+        if (window.updateActiveSpeaker) {
+            window.updateActiveSpeaker("alloy");
+          }
         break
       case "response.done":
         // formReceivedTextContainer.appendChild(document.createElement("hr"))

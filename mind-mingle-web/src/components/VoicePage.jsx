@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row, Button, Image } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
+import { startRealtime } from "../main";
 const VoicePage = () => {
+    const handleClick = () => {
+        startRealtime()
+    }
+
+    const imageContainerStyle = (speaker) => ({
+        border: speaking === speaker ? "4px solid #FFD700" : "4px solid transparent",
+        borderRadius: "50%",
+        padding: "5px",
+        animation: speaking === speaker ? "pulse 1.5s infinite" : "none",
+      });
+
     return (
-        
         <>
             <div
                 style={{
@@ -37,18 +48,18 @@ const VoicePage = () => {
             </div>  
             <div >
                 <Row style={{ margin: "10px", marginBottom: "20px"}}>
-                    <Image
-                        width="100%"
-                        height="auto"
-                        src="/images/alloy.png"
-                    />
+                        <Image
+                            width="100%"
+                            height="auto"
+                            src="/images/alloy.png"
+                        />
                 </Row>
                 <Row style={{ margin: "10px"}}>
-                    <Image
-                        width="100%"
-                        height="auto"
-                        src="/images/user.png"
-                    />
+                        <Image
+                            width="100%"
+                            height="auto"
+                            src="/images/user.png"
+                        />
                 </Row>
             </div>
             <Row className="bottom-buttons" style={{ marginBottom: "20px", padding: "20px", alignItems: "center"}}>
@@ -56,7 +67,9 @@ const VoicePage = () => {
                 <Button className="button-half-width" style={{ height: '56px', width: '162px' }}>End of Session</Button>
                 </Col>
                 <Col >
-                <Button type="primary" className="button-half-width" style={{ height: '56px', width: '162px' }}>Speaking</Button>
+                    <Button type="primary" className="button-half-width" style={{ height: '56px', width: '162px' }} onClick={handleClick}>
+                        Speaking
+                    </Button>
                 </Col>
             </Row>
         </>

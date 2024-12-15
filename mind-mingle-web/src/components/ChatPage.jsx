@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Layout, Input, Button, Avatar, Typography, Image } from 'antd'
 import { LeftOutlined, SendOutlined, SmileOutlined, AudioOutlined } from '@ant-design/icons'
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ const ChatPage = () => {
     const [inputText, setInputText] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [chatHistory, setChatHistory] = useState([]);
+    const messageListRef = useRef(null);
 
     const handleBackNavigation = () => {
         navigate(-1); // 이전 페이지로 이동
@@ -22,6 +23,11 @@ const ChatPage = () => {
     const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
+useEffect(() => {
+        if (messageListRef.current) {
+            messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
+        }
+    }, [messages]);
 
 useEffect(() => {
         // 초기 메시지 설정
@@ -126,7 +132,7 @@ You are an empathetic and supportive psychological counseling chatbot designed f
         </div>
       </Header>
 
-      <Content className={styles.messageList}>
+      <Content className={styles.messageList} ref={messageListRef}>
         {messages.map((message) => (
           <div
             key={message.id}

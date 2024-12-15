@@ -9,6 +9,9 @@ const Step2Page = () => {
     const goToNextStep = () => {
         navigate('/survey/step3');
     };
+    const handleBackNavigation = () => {
+        navigate(-1); // 이전 페이지로 이동
+    };
 
     return (
         <>
@@ -35,6 +38,7 @@ const Step2Page = () => {
                         color: "black", // 아이콘 색상
                         cursor: "pointer", // 클릭 가능한 커서 표시
                         }}
+                        onClick={handleBackNavigation}
                     >
                         <LeftOutlined />
                     </div>

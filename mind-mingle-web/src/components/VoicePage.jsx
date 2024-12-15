@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { Col, Row, Button, Image } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
 import { startRealtime, stopRealtime } from "../main";
-
+import { useNavigate } from "react-router-dom";
 
 const VoicePage = () => {
     const [activeSpeaker, setActiveSpeaker] = useState("");
     const [isSpeaking, setIsSpeaking] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.updateActiveSpeaker = setActiveSpeaker;
@@ -22,6 +23,9 @@ const VoicePage = () => {
             stopRealtime()
         }
     }
+    const handleBackNavigation = () => {
+        navigate(-1); // 이전 페이지로 이동
+    };
 
     const getBorderStyle = (speaker) => ({
         border: activeSpeaker === speaker ? "4px solid #007970" : "4px solid transparent",
@@ -49,6 +53,7 @@ const VoicePage = () => {
                     color: "black", // 아이콘 색상
                     cursor: "pointer", // 클릭 가능한 커서 표시
                     }}
+                    onClick={handleBackNavigation}
                 >
                     <LeftOutlined />
                 </div>

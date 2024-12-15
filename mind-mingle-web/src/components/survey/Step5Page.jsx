@@ -1,8 +1,14 @@
 import React from "react";
 import { LeftOutlined } from '@ant-design/icons';
 import { Progress, Radio, Space } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const Step5Page = () => {
+    const navigate = useNavigate();
+    const handleBackNavigation = () => {
+        navigate(-1); // 이전 페이지로 이동
+    };
+
     return (
         <>
             <div
@@ -28,6 +34,7 @@ const Step5Page = () => {
                         color: "black", // 아이콘 색상
                         cursor: "pointer", // 클릭 가능한 커서 표시
                         }}
+                        onClick={handleBackNavigation}
                     >
                         <LeftOutlined />
                     </div>

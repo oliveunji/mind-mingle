@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const VoicePage = () => {
     const [activeSpeaker, setActiveSpeaker] = useState("");
     const [isSpeaking, setIsSpeaking] = useState(false);
+    const [isInitiated, setIsInitiated] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,8 +19,9 @@ const VoicePage = () => {
         setIsSpeaking((prevState) => !prevState); 
         if(isSpeaking) {
             startRealtime()
+            setIsInitiated(true)
         }
-        else {
+        if(!isSpeaking && isInitiated) {
             stopRealtime()
         }
     }
@@ -39,12 +41,13 @@ const VoicePage = () => {
         <>
             <div
                 style={{
-                position: "fixed", // 화면에서 고정 위치
                 top: "10px", // 화면 위쪽에서 10px
                 left: "10px", // 화면 왼쪽에서 10px
                 textAlign: "left", // 아이콘과 텍스트를 가운데 정렬
                 marginBottom: "10px",
-                padding: "10px"
+                padding: "10px",
+                marginTop: "10px",
+                marginLeft: "10px"
             }}
             >
                 <div
@@ -59,7 +62,7 @@ const VoicePage = () => {
                 </div>
                 <div
                     style={{
-                    marginTop: "5px", // 아이콘과 문구 사이 간격
+                    marginTop: "25px", // 아이콘과 문구 사이 간격
                     fontSize: "20px", // 텍스트 크기
                     color: "#303636", // 텍스트 색상
                     fontWeight: "bold"
@@ -69,7 +72,7 @@ const VoicePage = () => {
                 </div>
             </div>  
             <div >
-                <Row style={{ margin: "10px", marginBottom: "20px"}}>
+                <Row style={{ margin: "10px", marginTop: "40px", marginBottom: "30px", marginLeft: "20px" }}>
                     <div style={getBorderStyle("alloy")}>
                         <Image
                             width="100%"
@@ -78,7 +81,7 @@ const VoicePage = () => {
                         />
                     </div>
                 </Row>
-                <Row style={{ margin: "10px"}}>
+                <Row style={{ margin: "10px", marginLeft: "20px"}}>
                     <div style={getBorderStyle("user")}>
                         <Image
                             width="100%"

@@ -70,7 +70,7 @@ const Step0Page = () => {
                     Answer a few simple questions.<br/>
                     We can better understand how to support you.
                 </div>
-                <div style={{ margin: "30px", marginTop: "80px" }}>
+                <div style={{ margin: "30px", marginTop: "80px", maxWidth: "375px" }}>
                     <Image
                         width="100%"
                         height="auto"

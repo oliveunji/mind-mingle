@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT license.
-
 import { Player } from "./player.js"
 import { Recorder } from "./recorder.js"
 import "./style.css"
@@ -112,6 +109,9 @@ async function handleRealtimeMessages() {
         break
       case "response.done":
         // formReceivedTextContainer.appendChild(document.createElement("hr"))
+        if (window.updateActiveSpeaker) {
+            window.updateActiveSpeaker("");
+          }
         break
       default:
         consoleLog = JSON.stringify(message, null, 2)

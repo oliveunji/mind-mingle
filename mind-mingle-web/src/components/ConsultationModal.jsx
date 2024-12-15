@@ -19,9 +19,10 @@ const ConsultationModal = ({ open, onClose }) => {
       footer={null}
       closable={false}
       className={styles.modal}
+                        
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
     >
-      <div className={styles.container}>
+      <div className={styles.container} style={{ maxWidth: "375px"}}>
         <h3 className={styles.title}>Select Consultation Type</h3>
         <div className={styles.options}>
           <button onClick={handleChatButton} className={styles.option}>

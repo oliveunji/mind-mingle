@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Step5Page = () => {
     const navigate = useNavigate();
+
+    const goToNextStep = () => {
+        navigate('/survey/success');
+    };
     const handleBackNavigation = () => {
         navigate(-1); // 이전 페이지로 이동
     };
@@ -66,7 +70,7 @@ const Step5Page = () => {
                 </Radio.Group>
             </div>
             <div className="bottom-button-container">
-                <button className="rounded-button">Next</button>
+                <button className="rounded-button" onClick={goToNextStep}>Next</button>
             </div>
         </>
     )

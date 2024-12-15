@@ -58,7 +58,7 @@ const Step2Page = () => {
                 </div>
             </div>
             <div style={{ marginLeft: "30px", marginTop: "120px" }}>
-                <Radio.Group defaultValue={3}>
+                <Radio.Group>
                     <Space direction="vertical" style={{ textAlign: "left" }}>
                         <Radio value={1} style={{ fontSize: "18px" }}>Never</Radio>
                         <Radio value={2} style={{ fontSize: "18px" }}>Rarely</Radio>

@@ -72,7 +72,7 @@ const MainPage = () => {
               number={3}
               title="Relationship Advice"
               date="Yesterday"
-              type="Video consultation"
+              type="Voice consultation"
             />
             {/* <SessionCard 
               number={5}
@@ -91,7 +91,7 @@ const MainPage = () => {
               number={1}
               title="Stress Management"
               date="Yesterday"
-              type="Video consultation"
+              type="Chat consultation"
             />
           </div>
         </div>

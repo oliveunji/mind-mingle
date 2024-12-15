@@ -1,5 +1,5 @@
 import './App.css'
-import LogoPage from './components/Onboarding1Page';
+import LogoPage from './components/LogoPage';
 import Onboarding1Page from './components/Onboarding1Page';
 import Onboarding2Page from './components/Onboarding2Page';
 import VoicePage from './components/VoicePage';

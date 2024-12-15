@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Avatar, Button, Layout, Typography, Card } from 'antd'
+import { Avatar, Button, Layout, Typography, Card, Image } from 'antd'
 import { HomeOutlined, AppstoreOutlined, MessageFilled, EditOutlined, UserOutlined } from '@ant-design/icons'
 
 const { Header, Content, Footer } = Layout
@@ -8,7 +8,7 @@ import styles from './page.module.css'
 import ConsultationModal from './ConsultationModal'
 
 const MainPage = () => {
-    const name = "Sarah" // This would come from your user context/state
+    const name = "Emily Kim" // This would come from your user context/state
 
     const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -29,7 +29,11 @@ const MainPage = () => {
             size={48}
             icon={
               <div className={styles.avatarIcon}>
-                <span className={styles.avatarEmoji}>☺️</span>
+                 <img 
+                      src="/images/alloy_icon.png"
+                      alt="Alloy"
+                      className={styles.avatarImage}
+                    />
               </div>
             }
           />

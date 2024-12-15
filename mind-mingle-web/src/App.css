@@ -41,8 +41,8 @@
 
 body {
   font-family: 'Pretendard', sans-serif;
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
+  /* background: rgb(var(--background-rgb)); */
   margin: 0;
   padding: 0;
 }
@@ -83,7 +83,7 @@ body {
   background-color: white;
   border-top: 1px solid #e5e7eb;
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px;
+  /* padding: 16px; */
   z-index: 1000;
 }
 

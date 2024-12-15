@@ -17,12 +17,12 @@ const Step1Page = () => {
         <>
             <div
                 style={{
-                position: "fixed", // 화면에서 고정 위치
                 top: "10px", // 화면 위쪽에서 10px
                 left: "10px", // 화면 왼쪽에서 10px
                 textAlign: "left", // 아이콘과 텍스트를 가운데 정렬
                 marginBottom: "10px",
-                padding: "10px"
+                padding: "10px",
+                marginTop: "10px"
             }}
             >
                 <div
@@ -49,14 +49,15 @@ const Step1Page = () => {
                     marginTop: "20px", // 아이콘과 문구 사이 간격
                     fontSize: "20px", // 텍스트 크기
                     color: "#303636", // 텍스트 색상
-                    fontWeight: "bold"
+                    fontWeight: "bold",
+                    padding: "20px"
                     }}
                 >
                     Over the past two weeks,
                     I've been cheerful and positive.
                 </div>
             </div>
-            <div style={{ marginLeft: "30px" }}> 
+            <div style={{ marginLeft: "30px", marginTop: "120px" }}> 
                 <Radio.Group defaultValue={3}>
                     <Space direction="vertical" style={{ textAlign: "left" }}>
                         <Radio value={1} style={{ fontSize: "18px" }}>Never</Radio>

@@ -12,12 +12,11 @@ const Onboarding1Page = () => {
     <>
       <div
         style={{
-        position: "fixed", // 화면에서 고정 위치
         top: "10px", // 화면 위쪽에서 10px
         left: "10px", // 화면 왼쪽에서 10px
         textAlign: "left", // 아이콘과 텍스트를 가운데 정렬
         marginBottom: "10px",
-        padding: "10px"
+        padding: "20px"
         }}
         >
             <div
@@ -42,7 +41,7 @@ const Onboarding1Page = () => {
             </div>
             
         </div>
-        <div style={{ marginTop: "120px" }}>
+        <div style={{ marginTop: "50px" }}>
                 <Image
                     width="100%"
                     height="auto"

@@ -1,46 +1,41 @@
 import React, { useEffect } from "react";
+import { Typography } from 'antd'
 import { useNavigate } from "react-router-dom";
+
+const { Title } = Typography
 
 const LogoPage = () => {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
-  console.log("isLoading", isLoading)
+
   useEffect(() => {
-    // 2초 후에 '/register'로 이동
-    console.log("hello")
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    //   navigate("/register");
-    }, 50000);
+      navigate('/onboard1'); // Redirect to main page after 3 seconds
+    }, 3000);
 
-    return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 정리
+    return () => clearTimeout(timer);
   }, [navigate]);
-
-  if (isLoading) {
-    return (
-      <div style={styles.logoPage}>
-        <h1 style={styles.logoText}>Mind Mingle</h1>
+  
+  return (
+    <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#2F7164'
+      }}>
+        <Title 
+          style={{
+            color: 'white',
+            margin: 0,
+            fontWeight: 'bold',
+            fontFamily: 'system-ui, -apple-system, sans-serif'
+          }}
+        >
+          Mind Mingle
+        </Title>
       </div>
-    );
-  }
+  )
 
-  return null;
-};
-
-const styles = {
-  logoPage: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#f0f8ff",
-    fontFamily: "Arial, sans-serif",
-  },
-  logoText: {
-    fontSize: "3rem",
-    fontWeight: "bold",
-    color: "#4a90e2",
-  },
 };
 
 export default LogoPage;

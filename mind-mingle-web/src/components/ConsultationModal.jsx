@@ -1,8 +1,18 @@
 import { Modal } from 'antd'
 import styles from './consultation-modal.module.css'
+import { useNavigate } from 'react-router-dom';
 
-export function ConsultationModal({ open, onClose }) {
-  return (
+const ConsultationModal = ({ open, onClose }) => {
+    const navigate = useNavigate();
+    const handleVoiceButton = () => {
+        navigate('/voice')
+    }
+
+    const handleChatButton = () => {
+        navigate('/chat')
+    }
+
+    return (
     <Modal
       open={open}
       onCancel={onClose}
@@ -14,10 +24,10 @@ export function ConsultationModal({ open, onClose }) {
       <div className={styles.container}>
         <h3 className={styles.title}>Select Consultation Type</h3>
         <div className={styles.options}>
-          <button onClick={() => onClose('chat')} className={styles.option}>
+          <button onClick={handleChatButton} className={styles.option}>
             Chat
           </button>
-          <button onClick={() => onClose('voice')} className={styles.option}>
+          <button onClick={handleVoiceButton} className={styles.option}>
             Voice
           </button>
         </div>
@@ -25,3 +35,5 @@ export function ConsultationModal({ open, onClose }) {
     </Modal>
   )
 }
+
+export default ConsultationModal;

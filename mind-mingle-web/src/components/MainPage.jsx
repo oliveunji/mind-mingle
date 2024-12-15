@@ -5,8 +5,7 @@ import { HomeOutlined, AppstoreOutlined, MessageFilled, EditOutlined, UserOutlin
 const { Header, Content, Footer } = Layout
 const { Title, Text } = Typography
 import styles from './page.module.css'
-import { ConsultationModal } from './ConsultationModal'
-
+import ConsultationModal from './ConsultationModal'
 
 const MainPage = () => {
     const name = "Sarah" // This would come from your user context/state

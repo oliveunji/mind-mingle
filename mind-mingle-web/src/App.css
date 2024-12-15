@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 .logo {
@@ -42,6 +41,10 @@
 
 body {
   font-family: 'Pretendard', sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  margin: 0;
+  padding: 0;
 }
 
 .heading {

@@ -1,108 +1,145 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
+import { Avatar, Button, Layout, Typography, Card } from 'antd'
+import { HomeOutlined, AppstoreOutlined, MessageFilled, EditOutlined, UserOutlined } from '@ant-design/icons'
+
+const { Header, Content, Footer } = Layout
+const { Title, Text } = Typography
+import styles from './page.module.css'
+import { ConsultationModal } from './ConsultationModal'
+
 
 const MainPage = () => {
-    const [isBottomSheetOpen, setBottomSheetOpen] = useState(true);
-    const menuItems = [
-        { name: "Home", img: "/images/home_icon.png", active: false },
-        { name: "Community", img: "/images/community_icon.png", active: false },
-        { name: "Bot", img: "/images/bot_icon.png", active: true },
-        { name: "Journal", img: "/images/journal_icon.png", active: false },
-        { name: "Profile", img: "/images/profile_icon.png", active: false },
-      ];
+    const name = "Sarah" // This would come from your user context/state
 
-    const toggleBottomSheet = () => {
-        setBottomSheetOpen(!isBottomSheetOpen);
-    };
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
-    return (
-        <div className="min-h-screen bg-gray-50 p-4">
-          {/* Header */}
-          <header className="text-center">
-            <div className="flex items-center justify-center">
-              <span className="text-3xl">😊</span>
-              <h1 className="text-2xl font-semibold ml-2">Hi, {"{name}"}</h1>
-            </div>
-            <p className="text-gray-500 mt-1">How are you today?</p>
-            <div className="flex justify-center mt-2 space-x-2">
-              <button className="px-4 py-2 bg-red-100 text-red-500 rounded-md">😢 Bad</button>
-              <button className="px-4 py-2 bg-yellow-100 text-yellow-500 rounded-md">😐 So so</button>
-              <button className="px-4 py-2 bg-green-100 text-green-500 rounded-md">👍 Good</button>
-              <button className="px-4 py-2 bg-blue-100 text-blue-500 rounded-md">😄 Great</button>
-            </div>
-          </header>
-    
-          {/* Last session */}
-          <section className="mt-6">
-            <h2 className="text-xl font-semibold">Last session</h2>
-            <div className="mt-2 space-y-4">
-              <div className="p-4 bg-white rounded-md shadow-md">
-                <p className="text-sm text-gray-500">3 Session</p>
-                <h3 className="text-lg font-semibold">Relationship Advice</h3>
-                <p className="text-sm text-gray-500">Yesterday • Video consultation</p>
+    const handleConsultation = (type) => {
+      setIsModalOpen(false)
+      // Handle consultation type selection
+      console.log('Selected consultation type:', type)
+    }
+
+  return (
+    <Layout className={styles.layout}>
+      {/* Top Section */}
+      <div className={styles.topSection}>
+
+        {/* Profile Section */}
+        <div className={styles.profileSection}>
+          <Avatar
+            size={48}
+            icon={
+              <div className={styles.avatarIcon}>
+                <span className={styles.avatarEmoji}>☺️</span>
               </div>
-              <div className="p-4 bg-white rounded-md shadow-md">
-                <p className="text-sm text-gray-500">5 Session</p>
-                <h3 className="text-lg font-semibold">Anxiety Coping Strategies</h3>
-                <p className="text-sm text-gray-500">Nov 13, 2024 • Video consultation</p>
-              </div>
-            </div>
-          </section>
-    
-          {/* Ended session */}
-          <section className="mt-6">
-            <h2 className="text-xl font-semibold">Ended session</h2>
-            <div className="mt-2 space-y-4">
-              <div className="p-4 bg-white rounded-md shadow-md">
-                <p className="text-sm text-gray-500">1 Session</p>
-                <h3 className="text-lg font-semibold">Stress Management</h3>
-                <p className="text-sm text-gray-500">Yesterday • Video consultation</p>
-              </div>
-              <div className="p-4 bg-white rounded-md shadow-md">
-                <p className="text-sm text-gray-500">7 Session</p>
-                <h3 className="text-lg font-semibold">Another Session Title</h3>
-                <p className="text-sm text-gray-500">Some date • Video consultation</p>
-              </div>
-            </div>
-          </section>
-    
-
-          <footer className="footer">
-            <div className="footer-menu">
-            {menuItems.map((item, index) => (
-                <div
-                    key={index}
-                    className={`footer-button ${
-                    item.active ? "footer-button-active" : ""
-                    }`}
-                >
-                    <img src={item.img} alt={item.name} />
-                    <span>{item.name}</span>
-                </div>
-                ))}
-            </div>
-          </footer>
-
-
-
-    {isBottomSheetOpen && (
-        <>
-          {/* Overlay */}
-          <div className="overlay" onClick={() => setBottomSheetOpen(false)}></div>
-
-          {/* 팝업 */}
-          <div className="popup">
-            <p style={{ fontSize: "16px", color: "gray", marginLeft: "20px" }}>Select Consultation Type</p>
-            <div className="option">Video</div>
-            <hr className="divider" />
-            <div className="option">Text</div>
-            <hr className="divider" />
-            <div className="option">Voice</div>
+            }
+          />
+          <div>
+            <Title level={4} className={styles.greeting}>Hi, {name}</Title>
+            <Text className={styles.subGreeting}>How are you today?</Text>
           </div>
-        </>
-      )}
-      
         </div>
-      );
+
+        {/* Mood Selection */}
+        <div className={styles.moodSelection}>
+          {[
+            { emoji: "😢", text: "Bad" },
+            { emoji: "😐", text: "So so" },
+            { emoji: "👍", text: "Good" },
+            { emoji: "😊", text: "Great" }
+          ].map((mood) => (
+            <Button 
+              key={mood.text}
+              className={styles.moodButton}
+            >
+              <span>{mood.emoji}</span>
+              <span>{mood.text}</span>
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Scrollable Content */}
+      <Content className={styles.scrollableContent}>
+        {/* Last Session Section */}
+        <div className={styles.sessionSection}>
+          <Title level={4}>Last session</Title>
+          <div className={styles.sessionList}>
+            <SessionCard 
+              number={3}
+              title="Relationship Advice"
+              date="Yesterday"
+              type="Video consultation"
+            />
+            {/* <SessionCard 
+              number={5}
+              title="Anxiety Coping Strategies"
+              date="Nov 13, 2024"
+              type="Video consultation"
+            /> */}
+          </div>
+        </div>
+
+        {/* Ended Session Section */}
+        <div className={styles.sessionSection}>
+          <Title level={4}>Ended session</Title>
+          <div className={styles.sessionList}>
+            <SessionCard 
+              number={1}
+              title="Stress Management"
+              date="Yesterday"
+              type="Video consultation"
+            />
+          </div>
+        </div>
+      </Content>
+
+      {/* Navigation Bar */}
+      <div className={styles.navBar}>
+        <div className={styles.navBarContent}>
+          <NavItem icon={<HomeOutlined />} text="Home" />
+          <NavItem icon={<AppstoreOutlined />} text="Community" />
+          <NavItem 
+            icon={<MessageFilled />} 
+            text="Chat"
+            active
+            onClick={() => setIsModalOpen(true)}
+          />
+          <NavItem icon={<EditOutlined />} text="Journal" />
+          <NavItem icon={<UserOutlined />} text="Profile" />
+        </div>
+      </div>
+      <ConsultationModal 
+        open={isModalOpen} 
+        onClose={handleConsultation}
+      />
+    </Layout>
+  )
 }
 
+function SessionCard({ number, title, date, type }) {
+    return (
+      <Card className={styles.sessionCard}>
+        <div className={styles.sessionCardContent}>
+          <Text className={styles.sessionNumber}>{number} Session</Text>
+          <Title level={5} className={styles.sessionTitle}>{title}</Title>
+          <Text className={styles.sessionInfo}>{date} • {type}</Text>
+        </div>
+      </Card>
+    )
+  }
+  
+  function NavItem({ icon, text, active = false, onClick }) {
+    return (
+      <div className={styles.navItem} onClick={onClick}>
+        <div className={`${styles.navIcon} ${active ? styles.navIconActive : ''}`}>
+          {icon}
+        </div>
+        <Text className={`${styles.navText} ${active ? styles.navTextActive : ''}`}>
+          {text}
+        </Text>
+      </div>
+    )
+  }
+  
 export default MainPage;

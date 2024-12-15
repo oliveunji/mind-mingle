@@ -56,7 +56,7 @@ const Step4Page = () => {
                     I've been waking up refreshed and well-rested.
                 </div>
             </div>
-            <div>
+            <div style={{ marginLeft: "30px" }}>
                 <Radio.Group defaultValue={3}>
                     <Space direction="vertical" style={{ textAlign: "left" }}>
                         <Radio value={1} style={{ fontSize: "18px" }}>Never</Radio>

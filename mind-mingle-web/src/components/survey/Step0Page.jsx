@@ -1,16 +1,17 @@
 import React from "react";
 import { LeftOutlined } from '@ant-design/icons';
-import { Progress, Radio, Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { Image } from 'antd';
 
-const Step1Page = () => {
+
+const Step0Page = () => {
     const navigate = useNavigate();
 
     const goToNextStep = () => {
-        navigate('/survey/step2');
+        navigate('/survey/step1');
     };
-    const handleBackNavigation = () => {
-        navigate(-1); // 이전 페이지로 이동
+    const goToMain = () => {
+        navigate('/main');
     };
 
     return (
@@ -38,41 +39,52 @@ const Step1Page = () => {
                         color: "black", // 아이콘 색상
                         cursor: "pointer", // 클릭 가능한 커서 표시
                         }}
-                        onClick={handleBackNavigation}
+                        // onClick={handleBackNavigation}
                     >
                         <LeftOutlined />
                     </div>
-                    <Progress percent={20} showInfo={false} style={{ flex: 1, marginLeft: "20px", marginRight: "40px" }} />
+                    <div
+                        onClick={goToMain}
+                    >
+                        Skip
+                    </div>
                 </div>
                 <div
                     style={{
-                    marginTop: "20px", // 아이콘과 문구 사이 간격
-                    fontSize: "20px", // 텍스트 크기
+                    marginTop: "40px", // 아이콘과 문구 사이 간격
+                    fontSize: "28px", // 텍스트 크기
                     color: "#303636", // 텍스트 색상
                     fontWeight: "bold"
                     }}
                 >
-                    Over the past two weeks,
-                    I've been cheerful and positive.
+                    Welcome!<br/>
+                    Help us get to know you
+                </div>
+                <div
+                    style={{
+                    marginTop: "15px", // 아이콘과 문구 사이 간격
+                    fontSize: "16px", // 텍스트 크기
+                    color: "#303636", // 텍스트 색상
+                    }}
+                >
+                    Answer a few simple questions.<br/>
+                    We can better understand how to support you.
+                </div>
+                <div style={{ margin: "30px", marginTop: "80px" }}>
+                    <Image
+                        width="100%"
+                        height="auto"
+                        src="/images/survey.png"
+                    />
                 </div>
             </div>
-            <div style={{ marginLeft: "30px" }}> 
-                <Radio.Group defaultValue={3}>
-                    <Space direction="vertical" style={{ textAlign: "left" }}>
-                        <Radio value={1} style={{ fontSize: "18px" }}>Never</Radio>
-                        <Radio value={2} style={{ fontSize: "18px" }}>Rarely</Radio>
-                        <Radio value={3} style={{ fontSize: "18px" }}>Occasionally</Radio>
-                        <Radio value={4} style={{ fontSize: "18px" }}>Often</Radio>
-                        <Radio value={5} style={{ fontSize: "18px" }}>Usually</Radio>
-                        <Radio value={6} style={{ fontSize: "18px" }}>Always</Radio>
-                    </Space>
-                </Radio.Group>
-            </div>
             <div className="bottom-button-container">
-                <button className="rounded-button" onClick={goToNextStep}>Next</button>
+                <button className="rounded-button" 
+                onClick={goToNextStep}
+                >Next</button>
             </div>
         </>
     )
 }
 
-export default Step1Page;
+export default Step0Page;

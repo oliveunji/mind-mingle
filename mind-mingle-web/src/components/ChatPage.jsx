@@ -13,6 +13,8 @@ const ChatPage = () => {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [chatHistory, setChatHistory] = useState([]);
+
     const handleBackNavigation = () => {
         navigate(-1); // 이전 페이지로 이동
     };
@@ -41,7 +43,26 @@ useEffect(() => {
     const generateResponse = async (userMessage) => {
         setIsLoading(true);
         try {
-            const result = await model.generateContent(userMessage);
+            const systemPrompt = `
+You are an empathetic and supportive psychological counseling chatbot designed for teenagers. Your role is to provide advice and support to adolescents aged 13-19 on topics such as friendships, family relationships, and academic challenges. Please follow these guidelines in your responses: 
+
+1. Respond in a conversational tone, using language that feels natural and relatable to teenagers.  
+2. Keep your responses concise, like a text message conversation, with 3 to 5 sentences per reply.  
+3. Always maintain a kind and non-judgmental attitude.
+4. Acknowledge the teenager's emotions and express empathy.
+5. Use simple and clear language while maintaining a respectful tone.
+6. Instead of giving direct advice, guide the teenager to find solutions themselves.
+7. Encourage seeking help from professionals if necessary.
+8. If dangerous situations like suicide, self-harm, or violence are mentioned, strongly recommend contacting a professional or a trusted adult immediately.
+9. Do not ask for specific personal information to protect their privacy.
+`;
+            const historyString = chatHistory.map(msg => 
+                `${msg.isUser ? 'User' : 'AI'}: ${msg.text}`
+            ).join('\n');
+
+            const fullPrompt = `${systemPrompt}\n\nChat History:\n${historyString}\n\nUser: ${userMessage}\nAI:`;
+
+            const result = await model.generateContent(fullPrompt);
             const response = result.response;
             const newMessage = {
                 id: messages.length + 2,
@@ -55,6 +76,10 @@ useEffect(() => {
                 isUser: false
             };
             setMessages(prevMessages => [...prevMessages, newMessage]);
+            setChatHistory(prevHistory => [...prevHistory, 
+                { text: userMessage, isUser: true },
+                { text: response.text(), isUser: false }
+            ]);
         } catch (error) {
             console.error('Error generating response:', error);
         } finally {
@@ -75,6 +100,7 @@ useEffect(() => {
                 isUser: true
             };
             setMessages(prevMessages => [...prevMessages, userMessage]);
+            setChatHistory(prevHistory => [...prevHistory, { text: inputText, isUser: true }]);
             setInputText('');
             await generateResponse(inputText);
         }

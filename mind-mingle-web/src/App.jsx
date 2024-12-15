@@ -12,6 +12,7 @@ import Step2Page from './components/survey/Step2Page';
 import Step3Page from './components/survey/Step3Page';
 import Step4Page from './components/survey/Step4Page';
 import Step5Page from './components/survey/Step5Page';
+import SelectConsultantPage from './components/SelectConsultantPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/survey/step5" element={<Step5Page />} />
         <Route path="/onboard1" element={<Onboarding1Page />} />
         <Route path="/onboard2" element={<Onboarding2Page />} />
+        <Route path="/selectConsultant" element={<SelectConsultantPage />} />
       </Routes>
     </BrowserRouter>
   )

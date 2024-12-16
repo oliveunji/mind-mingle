@@ -5,6 +5,9 @@ Minde Mingle provides a 24/7 AI-powered psychological counseling service tailore
 ## Demo
 - Deployment Link: [https://mind-mingle-image-850845052527.us-central1.run.app/](https://mind-mingle-image-850845052527.us-central1.run.app/)
 - Demo Video
+  [![Screenshot](https://github.com/user-attachments/assets/5b6bc95c-3f2b-4b33-8776-b14b4224773b)](https://youtu.be/M2SAkYcZq24)
 
 ## Architecture Diagram
+<img width="900" alt="image" src="https://github.com/user-attachments/assets/edef38dc-a0a4-4102-960a-129a79991f35" />
+
 
